@@ -1,0 +1,11 @@
+body{
+    background-color: #ecf2f6;
+}
+
+.logo {
+    max-width: 128px;
+}
+.login-section {
+    background-color: #fff;
+    border-radius: 10px;
+}
