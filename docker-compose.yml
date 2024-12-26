@@ -1,0 +1,65 @@
+services:
+    app:
+        container_name: nxlog
+        build: .
+        restart: unless-stopped
+        volumes:
+            - ./:/var/www
+            - ./.docker/bash:/commandhistory
+        depends_on:
+            - nginx
+            - mysql
+        ports:
+            - "5173:5173"
+            - "8080:8080"
+        networks:
+            - nxlog_net
+        extra_hosts:
+            - "host.docker.internal:127.0.0.1"
+
+    nginx:
+        container_name: nginx-slim
+        image: nginx:mainline-alpine3.17-slim
+        restart: unless-stopped
+        ports:
+            - "8001:80"
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/:/etc/nginx/conf.d/
+        networks:
+            - nxlog_net
+
+    mysql:
+        container_name: mysql
+        image: mysql:8.0.29
+        platform: linux/x86_64
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+        volumes:
+            - ./.docker/mysql/dbdata:/var/lib/mysql
+        ports:
+            - "3309:3306"
+        networks:
+            - nxlog_net
+        command: --bind-address=0.0.0.0
+
+    pma:
+        image: phpmyadmin/phpmyadmin
+        depends_on:
+            - mysql
+        restart: unless-stopped
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+            MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+        ports:
+            - "8010:80"
+        networks:
+            - nxlog_net
+networks:
+    nxlog_net:
+        driver: bridge
