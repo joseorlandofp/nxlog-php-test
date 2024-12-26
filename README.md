@@ -1,66 +1,52 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# NxLog PHP Test authored by Jose Orlando Felicio Parreira
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Project Design
 
-## About Laravel
+This project is built using **Laravel 11** and follows a clean, modular design with the following key components:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Docker:** The development environment is containerized for consistency and ease of setup. Docker is the preferred method for running the project.
+- **MVC Architecture:** The project adheres to the Model-View-Controller architecture for a clear separation of concerns.
+- **Services and Repository Pattern:** Business logic is encapsulated within service classes, while database interactions are handled by repository classes, ensuring clean and maintainable code.
+- **MySQL Database:** The project uses MySQL as the primary database for data storage and management.
+- **API Integration:** The project integrates with external APIs to enhance functionality and provide additional features.
+- **Authentication:** Secure user authentication is implemented, adhering to modern best practices.
+- **Abstract Classes examples** are used for base repository classes, promoting code reusability and consistency across implementations.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This design ensures scalability, maintainability, and performance while following Laravel's best practices.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Installation with Docker
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Follow these steps to set up the project:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. Clone the repository: `git clone https://github.com/joseorlandofp/nxlog-php-test.git`.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. Download the `.env` file shared via email (as it contains sensitive data such as LinkedIn and SMTP app credentials) and place it in the root of the project.
 
-## Laravel Sponsors
+3. Start the Docker environment using the command: `docker compose up -d --build`.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+4. Access the application container by running: `docker compose exec app bash`.
 
-### Premium Partners
+5. Install the project dependencies: `composer install && npm install`.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+6. Generate the application key and run the database migrations with: `php artisan key:generate && php artisan migrate`.
 
-## Contributing
+7. Start the application (It will run at http://localhost:8001): `npm run dev`.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Installation locally (Your own enviroment)
 
-## Code of Conduct
+1. Clone the repository: `git clone https://github.com/joseorlandofp/nxlog-php-test.git`.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. Download the `.env` file shared via email (as it contains sensitive data such as LinkedIn and SMTP app credentials) and place it in the root of the project. Make sure to set proper mysql credentials.
 
-## Security Vulnerabilities
+3. Install the project dependencies: `composer install && npm install`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. Generate the application key and run the database migrations with: `php artisan key:generate && php artisan migrate`.
 
-## License
+7. Start the server: `php artisan serve`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Usage
+
+1. Open your browser and access http://localhost:8000 or http://localhost:8001 depending on the installation method (your console will point out the correct port).
+2. Authenticate with LinkedIn.
+3. Reset your password, create accounts with different e-mails and test the required business rules.
