@@ -75,11 +75,13 @@
 
                 <div class="row justify-content-center mt-3 mb-3">
                     <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                        <a href="/auth/linkedin/redirect"
-                            class="btn btn-linkedin btn-sm d-flex-align-items-center justify-content-center">
-                            <i class="fa-brands fa-linkedin"></i>
-                            sign in with LinkedIn
-                        </a>
+                        <form action="/auth/linkedin/redirect">
+                            <button class="btn btn-linkedin btn-sm d-flex-align-items-center justify-content-center">
+                                <i class="fa-brands fa-linkedin"></i>
+                                sign in with LinkedIn
+                            </button>
+                        </form>
+
                     </div>
                 </div>
             </div>
