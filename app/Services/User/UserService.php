@@ -21,7 +21,7 @@ class UserService
         $this->repository = $repository;
     }
 
-    public function sync($user, $origin)
+    public function sync($user, $origin): User
     {
         $this->repository->updateOrCreate([
             'email' => $user->email
@@ -55,23 +55,23 @@ class UserService
         return $userEntity;
     }
 
-    public function generatePasswordResetToken(User $user)
+    public function generatePasswordResetToken(User $user): string | null
     {
         $token = $this->repository->generatePasswordResetToken($user);
 
         return $token;
     }
 
-    public function invalidatePasswordResetToken(string $email) : void
+    public function invalidatePasswordResetToken(string $email): void
     {
         app(PasswordResetTokenRepository::class)->invalidate([
             'email' => $email
         ]);
     }
 
-    public function getLinkedinProfile($user)
+    public function getLinkedinProfile($user): \Laravel\Socialite\Contracts\User | null
     {
-        if($user->origin !== UserOriginEnum::LINKEDIN->value){
+        if ($user->origin !== UserOriginEnum::LINKEDIN->value) {
             return null;
         }
 
@@ -80,7 +80,7 @@ class UserService
             ->first()->token);
     }
 
-    public function resetPassword($token, $password)
+    public function resetPassword($token, $password): User | null
     {
         $user = $this->getUserByToken($token);
 
@@ -98,7 +98,7 @@ class UserService
         return $user;
     }
 
-    public function getUserByToken($token)
+    public function getUserByToken($token): User | null
     {
         $token = app(PasswordResetTokenRepository::class)->findOneWhere([
             'token' => $token
@@ -113,7 +113,7 @@ class UserService
         ]);
     }
 
-    public function sendResetPasswordMail($email)
+    public function sendResetPasswordMail($email): void
     {
         $user = $this->repository->findOneWhere([
             'email' => $email
@@ -121,6 +121,6 @@ class UserService
 
         $token = $this->generatePasswordResetToken($user);
 
-        return Mail::to($email)->send(new ResetPasswordMail($user, $token));
+        Mail::to($email)->send(new ResetPasswordMail($user, $token));
     }
 }
