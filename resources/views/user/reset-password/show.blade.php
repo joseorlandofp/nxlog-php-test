@@ -1,6 +1,6 @@
 @extends('main')
 @section('title')
-    Reset your password | NXLog PHP Test
+    Create your new password | NXLog PHP Test
 @endsection
 
 @section('body')
@@ -13,37 +13,39 @@
 
                 <div class="w-100 text-center">
                     <h5 class="text-muted">
-                        Reset your password
+                        Hello again, {{ $user->name }}.<br> Please, create your new password
                     </h5>
                 </div>
 
-                <form method="POST" action="/reset-password">
+                <form method="POST" action="/reset-password/reset">
                     @csrf
+                    <input type="hidden" name="token" value="{{ $token }}">
                     <div class="w-100">
                         <div class="row justify-content-center">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group mb-3">
-                                    <label for="email" class="form-label">E-mail</label>
-                                    <input type="email" id="email" class="form-control" name="email"
-                                        value="{{ old('email') }}" required>
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" id="email" class="form-control" name="password" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group mb-3">
+                                    <label for="password-confirmation" class="form-label">Password confirmation</label>
+                                    <input type="password" id="password-confirmation" class="form-control"
+                                        name="password_confirmation" required>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row justify-content-center mt-3 mb-3">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <button class="btn btn-primary w-100">Send e-mail</button>
+                                <button class="btn btn-primary w-100">Reset password</button>
                             </div>
                         </div>
                 </form>
-
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                        <small>
-                            <a class="btn btn-link" href="/">Back to login</a>
-                        </small>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

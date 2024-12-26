@@ -16,13 +16,14 @@ return new class extends Migration
             $table->id();
             $table->string('name', 255);
             $table->string('email', 255)->unique();
-            $table->string('password', 255);
+            $table->string('password', 255)->nullable();
             $table->string('origin', 255)->nullable()->default(UserOriginEnum::LOCAL->value);
             $table->timestamps();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email', 255)->primary();
+            $table->id();
+            $table->string('email', 255);
             $table->string('token', 255);
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();

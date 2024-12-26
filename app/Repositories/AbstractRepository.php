@@ -58,8 +58,9 @@ class AbstractRepository implements RepositoryInterface
         return $this->getModel()->where($where)->with($with)->withCount($withCount)->get();
     }
 
-    public function createOrUpdate($paramsValidator, $params)
+    public function updateOrCreate($paramsValidator, $params)
     {
         return $this->getModel()->updateOrCreate($paramsValidator, $params);
     }
+
 }

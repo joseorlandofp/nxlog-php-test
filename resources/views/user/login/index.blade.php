@@ -17,63 +17,73 @@
                     </h5>
                 </div>
 
-                <div class="w-100">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="form-group mb-3">
-                                <label for="email" class="form-label">E-mail</label>
-                                <input type="email" id="email" class="form-control" name="email"
-                                    value="{{ old('email') }}" required>
+                <form method="POST" action="/login">
+                    @csrf
+
+
+                    <div class="w-100">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group mb-3">
+                                    <label for="email" class="form-label">E-mail</label>
+                                    <input type="email" id="email" class="form-control" name="email"
+                                        value="{{ old('email') }}" required>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row justify-content-center">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="form-group mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" id="password" class="form-control" name="password" required>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" id="password" class="form-control" name="password" required>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 text-end">
-                            <small>
-                                <a class="btn btn-link" href="/reset-password">Forgot your password?</a>
-                            </small>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 text-end">
+                                <small>
+                                    <a class="btn btn-link" href="/reset-password">Forgot your password?</a>
+                                </small>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row justify-content-center mt-3 mb-3">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <button class="btn btn-primary w-100">Login</button>
+                        <div class="row justify-content-center mt-3 mb-3">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <button class="btn btn-primary w-100">Login</button>
+                            </div>
                         </div>
-                    </div>
+                </form>
 
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                            <small>
-                                <a class="btn btn-link" href="/register">Don't have an account? Sign up now</a>
-                            </small>
-                        </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                        <small>
+                            <a class="btn btn-link" href="/register">Don't have an account? Sign up now</a>
+                        </small>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                            <small class="text-muted">
-                                OR
-                            </small>
-                        </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                        <small class="text-muted">
+                            OR
+                        </small>
                     </div>
+                </div>
 
-                    <div class="row justify-content-center mt-3 mb-3">
-                        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                            <a href="/auth/linkedin/redirect" class="btn btn-primary">Sign Up with Linkedin</a>
-                        </div>
+
+                <div class="row justify-content-center mt-3 mb-3">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                        <a href="/auth/linkedin/redirect"
+                            class="btn btn-linkedin btn-sm d-flex-align-items-center justify-content-center">
+                            <i class="fa-brands fa-linkedin"></i>
+                            sign in with LinkedIn
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection
