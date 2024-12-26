@@ -17,7 +17,7 @@
                     </h5>
                 </div>
 
-                <form method="POST" action="/reset-password">
+                <form method="POST" action="/reset-password/send-email">
                     @csrf
                     <div class="w-100">
                         <div class="row justify-content-center">

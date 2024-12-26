@@ -17,12 +17,17 @@ class UserRepository extends AbstractRepository
 
     public function generatePasswordResetToken(User $user)
     {
-        return app(PasswordResetTokenRepository::class)->updateOrCreate([
+        app(PasswordResetTokenRepository::class)->updateOrCreate([
             'email' => $user->email
         ], [
             'token' => Str::uuid(),
             'email' => $user->email,
             'expires_at' => Carbon::now()->addMinutes(120)->format('Y-m-d H:i:s')
         ]);
+
+        return app(PasswordResetTokenRepository::class)->findOneWhere([
+            'email' => $user->email
+        ]);
+
     }
 }

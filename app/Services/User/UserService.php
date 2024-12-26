@@ -4,6 +4,7 @@ namespace App\Services\User;
 
 use App\Enums\User\UserOriginEnum;
 use App\Mail\User\ResetPasswordMail;
+use App\Models\PasswordResetToken;
 use App\Models\User;
 use App\Repositories\User\PasswordResetTokenRepository;
 use App\Repositories\User\UserRepository;
@@ -55,7 +56,7 @@ class UserService
         return $userEntity;
     }
 
-    public function generatePasswordResetToken(User $user): string | null
+    public function generatePasswordResetToken(User $user): PasswordResetToken | null
     {
         $token = $this->repository->generatePasswordResetToken($user);
 
