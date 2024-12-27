@@ -58,7 +58,7 @@ Follow these steps to set up the project:
 
 1. Clone the repository:
 ~~~shell
-   git clone https://github.com/joseorlandofp/nxlog-php-test.git`
+   git clone https://github.com/joseorlandofp/nxlog-php-test.git
 ~~~
 
 2. Download the `.env` file shared via email (as it contains sensitive data such as LinkedIn and SMTP app credentials) and place it in the root of the project. Make sure to set proper mysql credentials and change the APP_URL variable to the correct port, 8000.
