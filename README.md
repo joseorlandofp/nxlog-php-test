@@ -23,59 +23,76 @@ Follow these steps to set up the project:
 
 1. Clone the repository: 
 ~~~shell
-   git clone https://github.com/joseorlandofp/nxlog-php-test.git
+git clone https://github.com/joseorlandofp/nxlog-php-test.git
 ~~~
 
-2. Download the `.env` file shared via email (as it contains sensitive data such as LinkedIn and SMTP app credentials) and place it in the root of the project.
+2. Download the `.env` file shared via email (as it contains sensitive data such as LinkedIn and SMTP app credentials) and place it in the root of the project. Or run the standard `cp .env.example .env` If you choose to do so, make sure to set the correct variables in it, their full values can be found in the e-mail.
+~~~shell
+APP_URL=APP_URL=http://localhost:8001
+
+LINKEDIN_CLIENT_ID=FOUND_IN_THE_EMAIL
+LINKEDIN_CLIENT_SECRET=FOUND_IN_THE_EMAIL
+LINKEDIN_REDIRECT_URI=FOUND_IN_THE_EMAIL
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.hostinger.com
+MAIL_PORT=465
+MAIL_USERNAME=FOUND_IN_THE_EMAIL
+MAIL_PASSWORD=FOUND_IN_THE_EMAIL
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=FOUND_IN_THE_EMAIL
+MAIL_FROM_NAME="Orlando from NXLog"
+~~~
+
 
 3. Start the Docker environment using the command: 
 ~~~shell
-   docker compose up -d --build
+docker compose up -d --build
 ~~~
 
 4. Access the application container by running:
 ~~~shell
-   docker compose exec app bash
+docker compose exec app bash
 ~~~
 
 
 5. Install the project dependencies:
 ~~~shell
-   composer install && npm install
+composer install && npm install
 ~~~
 
 6. Generate the application key and run the database migrations with:
 ~~~shell
-   php artisan key:generate && php artisan migrate
+php artisan key:generate && php artisan migrate
 ~~~
 
 7. Start the application (It will run at http://localhost:8001):
 ~~~shell
-   npm run dev
+npm run dev
 ~~~
 
 ## Installation locally (Your own enviroment)
 
 1. Clone the repository:
 ~~~shell
-   git clone https://github.com/joseorlandofp/nxlog-php-test.git
+git clone https://github.com/joseorlandofp/nxlog-php-test.git
 ~~~
 
 2. Download the `.env` file shared via email (as it contains sensitive data such as LinkedIn and SMTP app credentials) and place it in the root of the project. Make sure to set proper mysql credentials and change the APP_URL variable to the correct port, 8000.
 
 3. Install the project dependencies:
 ~~~shell
-   composer install && npm install
+composer install && npm install
 ~~~
 
 4. Generate the application key and run the database migrations with:
 ~~~shell
-   php artisan key:generate && php artisan migrate
+php artisan key:generate && php artisan migrate
 ~~~
 
 5. Start the server:
 ~~~shell
-   php artisan serve
+php artisan serve
 ~~~
 
 ## Usage
