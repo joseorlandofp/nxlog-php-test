@@ -51,7 +51,7 @@ Follow these steps to set up the project:
 
 7. Start the application (It will run at http://localhost:8001):
 ~~~shell
-   npm run dev`
+   npm run dev
 ~~~
 
 ## Installation locally (Your own enviroment)
